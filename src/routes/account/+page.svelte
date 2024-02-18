@@ -1,6 +1,7 @@
 <!-- src/routes/account/+page.svelte -->
-<script lang="ts">
+<script >
 	import { enhance } from '$app/forms';
+	import { Button } from "$lib/components/ui/button";
 
 
 	export let data
@@ -75,4 +76,6 @@
 			<button class="button block" disabled={loading}>Sign Out</button>
 		</div>
 	</form>
+
+	<Button variant="outline" disabled={loading }>Sign Out SHAD</Button>
 </div>

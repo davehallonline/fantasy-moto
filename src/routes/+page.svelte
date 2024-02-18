@@ -31,10 +31,20 @@
 		<div class="col-6 form-widget">
 			<Auth
 				supabaseClient={data.supabase}
+				localization={{
+					variables: {
+					  sign_in: {
+						email_input_label: 'Email address',
+						email_input_placeholder	: 'Your email address',
+						button_label : 'Lets go racin',
+					  },
+					},
+				  }}
 				view="magic_link"
 				redirectTo={`${data.url}/auth/callback`}
 				showLinks={false}
 				appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
+				
 			/>
 		</div>
 	</div>
