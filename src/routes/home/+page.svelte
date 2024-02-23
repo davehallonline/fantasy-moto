@@ -1,6 +1,13 @@
 <script>
     import { Button } from "$lib/components/ui/button";
     import * as Card from "$lib/components/ui/card";
+    import { goto } from '$app/navigation';
+
+    export let data;
+
+    const handleClick = (eventId) => {
+	    goto('/event/'+eventId);
+    }
 </script>
 
 <svelte:head>
@@ -18,23 +25,20 @@
         </Card.Header>
       </Card.Root>
 
-      <br/>
-
+    {#each data.events as event}
       <Card.Root>
         <Card.Header>
-          <Card.Title>Next Event</Card.Title>
-          <Card.Description>Bahrain - Formula 1 Gulf Air Grand Prix</Card.Description>
+          <Card.Title>{event.event_name}</Card.Title>
+          <Card.Description>{event.event_desc}</Card.Description>
         </Card.Header>
         <Card.Content>
           <p>Track Image?</p>
         </Card.Content>
         <Card.Footer>
-            <Button variant="outline">Make your picks</Button>
+            <Button variant="outline" on:click={() => handleClick(event.event_id)}>Make your picks</Button>
         </Card.Footer>
       </Card.Root>
-
-    
-
+    {/each}
 	
 
 	
