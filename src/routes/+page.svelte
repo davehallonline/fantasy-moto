@@ -7,6 +7,7 @@
 	import { ThemeSupa } from '@supabase/auth-ui-shared'
 
 	export let data;
+
 </script>
 
 <svelte:head>
