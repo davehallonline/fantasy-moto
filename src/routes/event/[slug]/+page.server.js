@@ -15,17 +15,36 @@ export async function load({ params, locals:{supabase, getSession} }) {
     throw redirect(303, '/')
   }
   
-  const { data } = await supabase
+  const { data: condata } = await supabase.from('Constructors').select('*');
+
+  const { data: eventdata } = await supabase.from('Events').select(`event_id,event_name,event_desc`).eq('event_id', params.slug);
+
+
+
+        
+  //const condata = [{id:'1', constructor_name:'Con1'}]
+
+  //throw(condata)
+
+ /*  const { data: Events, error } = await supabase
   .from('Events')
-  .select('*')
-  .eq('event_id', params.slug);
+  .select(`event_id,event_name,event_desc,
+  EventPicks (
+    event_id
+  )`)
+  .eq('event_id', params.slug)
+  .eq('user_id', session?.user.id);
+        
+throw(data) */
 
   return {
-    events: data ?? error(404, 'Not found'),
-    form: await superValidate(data.events, zod(formSchema)),
+    events: eventdata ?? error(404, 'Not found'),
+    constructors: condata ?? [],
+    form: await superValidate(eventdata[0], zod(formSchema)),
     session: session,
   };
 }
+
 
 export const actions = {
   default: async ({request, locals: { supabase, getSession}}) => {
@@ -37,7 +56,7 @@ export const actions = {
     if (!form.data.id) {
       //insert record
       const eventpicks = { ...form.data };
-      console.log(JSON.stringify(eventpicks ))
+      //console.log('ep: ' + JSON.stringify(eventpicks ))
       const { error } = await supabase
         .from('EventPicks')
         .upsert({ 

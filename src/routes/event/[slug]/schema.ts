@@ -9,8 +9,8 @@ export const constructors = {
 type Constructor = keyof typeof constructors;
 
 export const formSchema = z.object({
-    user_id: z.string().min(2).max(50),
-    event_id: z.string().min(2).max(50),
+    /* user_id: z.string().min(2).max(50),*/
+    event_id: z.string().min(2).max(50), 
 	constructor_id: z
 		.enum(Object.keys(constructors) as [Constructor, ...Constructor[]])
 		.default("8f9742ff-8bbb-41ab-a759-dec1d5c6f4b6"),

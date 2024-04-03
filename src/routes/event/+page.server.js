@@ -14,14 +14,18 @@ console.log(params)
     .from('Events')
     .select('*')
     .eq('event_id', params.slug)
-    return {
-      events: data[0] ?? [],
+    //return {
+    //  events: data[0] ?? [],
       //events: data ?? error(404, 'Not found'),
-    }
+   // }
 
 
 
 	//error(404, 'Not found');
+
+  
+    
+  
 }
 
 /* async function getPostFromDatabase(slug) {

@@ -3,8 +3,10 @@
 
 	// import type { PageData } from "./$types";
 	import EventForm from './event-form.svelte';
-	export let data; //: PageData;
-    
+
+	import ConstructorList from "../ConstructorList.svelte";
+
+	export let data;
 </script>
 
 <svelte:head>
@@ -16,8 +18,13 @@
 	<h1>{data.events[0].event_name} Event Page</h1>
 
 	<h2>{data.events[0].event_desc}</h2>
+	
+	<ConstructorList data={data.constructors} />
 
 	<EventForm data={data.form} />
 
-	<SuperDebug data={data.form} />
+
+	<!-- <SuperDebug data={data.form} /> -->
+
+  
 </div>

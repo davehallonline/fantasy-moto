@@ -27,23 +27,23 @@
    
   <form method="POST" use:enhance>
    
-    <Form.Field {form} name="user_id">
+    <!-- <Form.Field {form} name="user_id">
       <Form.Control let:attrs>
         <Form.Label>User Id</Form.Label>
         <Input {...attrs} bind:value={$formData.user_id} />
       </Form.Control>
       <Form.Description>This is your userid.</Form.Description>
       <Form.FieldErrors />
-    </Form.Field>
+    </Form.Field>-->
 
     <Form.Field {form} name="event_id">
         <Form.Control let:attrs>
           <Form.Label>Event Id</Form.Label>
-          <Input {...attrs} bind:value={$formData.event_id} />
+          <Input type="text" {...attrs} bind:value={$formData.event_id} />
         </Form.Control>
         <Form.Description>This is your eventid.</Form.Description>
         <Form.FieldErrors />
-      </Form.Field>
+      </Form.Field> 
 
       <Form.Field {form} name="constructor_id">
         <Form.Control let:attrs>
